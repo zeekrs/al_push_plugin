@@ -35,4 +35,41 @@ class PusherController {
   Future<int?> stopPush() {
     return _channel.invokeMethod<int?>("stopPush");
   }
+
+
+
+  Future<int?> showPanel() {
+    return _channel.invokeMethod<int?>("showPanel");
+  }
+
+
+  Future<int?> dispose() {
+    return _channel.invokeMethod<int?>("dispose");
+  }
+
+
+  Future<int?> pause() {
+    return _channel.invokeMethod<int?>("pause");
+  }
+
+
+  Future<bool?> isPushing() {
+    return _channel.invokeMethod<bool?>("isPushing");
+  }
+
+
+  Future<int?> resume() {
+    return _channel.invokeMethod<int?>("resume");
+  }
+
+
+  Future<int?> stopPreview() {
+    return _channel.invokeMethod<int?>("stopPreview");
+  }
+  Future<int?> startPreview() {
+    return _channel.invokeMethod<int?>("startPreview");
+  }
+  Future<int?> switchCamera() {
+    return _channel.invokeMethod<int?>("switchCamera");
+  }
 }
