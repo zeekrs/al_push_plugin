@@ -1,0 +1,41 @@
+PODS:
+  - al_push_plugin (0.0.1):
+    - AlivcLivePusher (= 4.4.1)
+    - Flutter
+    - Queen (= 2.0.0-official-lite)
+  - AlivcLivePusher (4.4.1):
+    - AlivcLivePusher/AlivcLivePusher (= 4.4.1)
+  - AlivcLivePusher/AlivcLivePusher (4.4.1)
+  - Flutter (1.0.0)
+  - native_device_orientation (0.0.1):
+    - Flutter
+  - Queen (2.0.0-official-lite)
+
+DEPENDENCIES:
+  - al_push_plugin (from `.symlinks/plugins/al_push_plugin/ios`)
+  - Flutter (from `Flutter`)
+  - native_device_orientation (from `.symlinks/plugins/native_device_orientation/ios`)
+
+SPEC REPOS:
+  trunk:
+    - AlivcLivePusher
+    - Queen
+
+EXTERNAL SOURCES:
+  al_push_plugin:
+    :path: ".symlinks/plugins/al_push_plugin/ios"
+  Flutter:
+    :path: Flutter
+  native_device_orientation:
+    :path: ".symlinks/plugins/native_device_orientation/ios"
+
+SPEC CHECKSUMS:
+  al_push_plugin: 702fe814864b97bca262905a19d27beae2829fff
+  AlivcLivePusher: 29a1265ce45fffd8de42fbbafebc669a8000d444
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  native_device_orientation: 3b4cfc9565a7b879cc4fde282b3e27745e852d0d
+  Queen: c4db8a2400c4e6af2c2920c3d7293ee09cb48690
+
+PODFILE CHECKSUM: a75497545d4391e2d394c3668e20cfb1c2bbd4aa
+
+COCOAPODS: 1.10.1
