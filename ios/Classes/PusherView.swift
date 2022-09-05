@@ -147,6 +147,7 @@ class PusherView: NSObject, FlutterPlatformView,AlivcLivePusherInfoDelegate,Aliv
     
     func onReconnectSuccess(_ pusher: AlivcLivePusher!) {
         print("on reconnect success")
+        
     }
     
     func onConnectionLost(_ pusher: AlivcLivePusher!) {
@@ -156,10 +157,14 @@ class PusherView: NSObject, FlutterPlatformView,AlivcLivePusherInfoDelegate,Aliv
     
     func onReconnectError(_ pusher: AlivcLivePusher!, error: AlivcLivePushError!) {
         print("on reconnect time out")
+        _channel.invokeMethod("error", arguments: "on reconnect time out");
+
     }
     
     func onSendDataTimeout(_ pusher: AlivcLivePusher!) {
         print("send data timeout")
+        _channel.invokeMethod("error", arguments: "send data timeout");
+
     }
    
     func onPushURLAuthenticationOverdue(_ pusher: AlivcLivePusher!) -> String! {
@@ -174,6 +179,8 @@ class PusherView: NSObject, FlutterPlatformView,AlivcLivePusherInfoDelegate,Aliv
     
     func onSendSeiMessage(_ pusher: AlivcLivePusher!) {
         print("send message")
+        _channel.invokeMethod("error", arguments: "send message");
+
     }
     
     private var _view: UIView
@@ -216,6 +223,23 @@ class PusherView: NSObject, FlutterPlatformView,AlivcLivePusherInfoDelegate,Aliv
             case "stopPush":
                 let res =  self._livePusher.stopPush()
                 result(res)
+            case "showPanel":
+                AlivcBeautyController.sharedInstance().showPanel(true)
+            case "dispose":
+                self._livePusher.destory();
+            case "pause":
+                self._livePusher.pause();
+            case "isPushing":
+                result(self._livePusher.isPushing());
+            case "resume":
+                self._livePusher.resume();
+            case "stopPreview":
+                self._livePusher.stopPreview();
+            case "startPreview":
+                self._livePusher.startPreview(self._view);
+            case "switchCamera":
+                self._livePusher.switchCamera();
+          
             default:
                 break
             }
@@ -240,18 +264,18 @@ class PusherView: NSObject, FlutterPlatformView,AlivcLivePusherInfoDelegate,Aliv
     func createNativeView(view _view: UIView){
         
         _livePusher.startPreview(_view)
-        let button = UIButton(type: .custom)
-        button.frame = CGRect(x: 100,y: 80, width: 40, height: 40)
-           button.layer.cornerRadius = 0.5 * button.bounds.size.width
-           button.clipsToBounds = true
-//        let button = UIButton.init(frame: CGRect.init(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 40))
-//        button.titleLabel.font=[UIFont systemFontOfSize:12];
-        button.titleLabel?.font = UIFont(name: "", size: 10)
-        button.setTitle("美颜", for: .normal)
-        button.backgroundColor = UIColor(red: 0x13/255, green: 0x1b/255, blue: 0x33/255, alpha: 1)
-        _view.addSubview(button)
-        button.addGestureRecognizer(UITapGestureRecognizer(target: self,action: #selector(onBeautyClick)))
-      
+//        let button = UIButton(type: .custom)
+//        button.frame = CGRect(x: 100,y: 80, width: 40, height: 40)
+//           button.layer.cornerRadius = 0.5 * button.bounds.size.width
+//           button.clipsToBounds = true
+////        let button = UIButton.init(frame: CGRect.init(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 40))
+////        button.titleLabel.font=[UIFont systemFontOfSize:12];
+//        button.titleLabel?.font = UIFont(name: "", size: 10)
+//        button.setTitle("美颜", for: .normal)
+//        button.backgroundColor = UIColor(red: 0x13/255, green: 0x1b/255, blue: 0x33/255, alpha: 1)
+//        _view.addSubview(button)
+//        button.addGestureRecognizer(UITapGestureRecognizer(target: self,action: #selector(onBeautyClick)))
+//
         if(self.beautyOn){
             AlivcBeautyController.sharedInstance().setupBeautyController()
             AlivcBeautyController.sharedInstance().setupBeautyControllerUI(with: self._view)
