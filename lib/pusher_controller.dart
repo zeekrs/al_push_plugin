@@ -72,4 +72,11 @@ class PusherController {
   Future<int?> switchCamera() {
     return _channel.invokeMethod<int?>("switchCamera");
   }
+
+  Future<int?> destroyUI() {
+    return _channel.invokeMethod<int?>("destroyUI");
+  }
+  Future<int?> destroy() {
+    return _channel.invokeMethod<int?>("destroy");
+  }
 }
