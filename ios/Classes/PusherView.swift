@@ -225,6 +225,10 @@ class PusherView: NSObject, FlutterPlatformView,AlivcLivePusherInfoDelegate,Aliv
                 result(res)
             case "showPanel":
                 AlivcBeautyController.sharedInstance().showPanel(true)
+            case "destroyUI":
+                AlivcBeautyController.sharedInstance().destroyUI()
+            case "destroy":
+                AlivcBeautyController.sharedInstance().destroy()
             case "dispose":
                 self._livePusher.destory();
             case "pause":

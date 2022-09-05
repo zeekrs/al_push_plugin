@@ -43,9 +43,7 @@ class _MyAppState extends State<MyApp> {
           Positioned(
             child: MaterialButton(
               onPressed: () {
-                print("开始直播");
-                pusherController.startPush(
-                    "rtmp://push.tssjhb.com/test/test?auth_key=1660983721-0-0-f0618adb0d1479cf585a52f7623c84ba");
+                pusherController.showPanel();
               },
               child: Text("开直播"),
               color: Colors.blue,
